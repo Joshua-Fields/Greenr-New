@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <!--Begin meta tags-->
+        <title>About Us</title>
+        <meta name="description" content="Greenr - a space for community change">
+        <meta name="keywords" content="">
+        <meta name="author" content="group 41">
+        <!--End meta tags-->
+        <!--Begin CSS files-->
+        <link rel="stylesheet" type="text/css" href="css/who-we-are.css">
+        <!--End CSS files-->
+    </head>
+    <body>
+        <div class="header">
+            <div class="navbar">
+                <a href="">
+                    <button class="nav-button">Home</button>
+                </a>
+                <a href="">
+                    <button class="nav-button">Community</button>
+                </a>
+                <a th:href="@{/aqi}">
+                    <button class="nav-button">AQI</button>
+                </a>
+                <a th:href="@{/who-we-are}">
+                    <button class="nav-button">About Us</button>
+                </a>
+                <a href="">
+                    <button class="nav-button">Contact Us</button>
+                </a>
+                <a th:href="@{/faq}">
+                    <button class="nav-button">FAQ</button>
+                </a>
+                <a th:href="@{/profile}">
+                    <button class="nav-button">Your Profile</button>
+                </a>
+                <a th:href="@{/logout}">
+                    <button class="nav-button">Logout</button>
+                </a>
+            </div>
+            <br>
+            <br>
+            <div class="content">
+                <div id="images">
+                    <!--image banner-->
+                    <img id="img1" src="img/cleanup1.png">
+                    <img id="img2" src="img/cleanup2.png">
+                    <img id="img3" src="img/cleanup3.png">
+                </div>            
+                <div id="text">
+                    <!--page text-->
+                    <h1>Who We Are</h1>
+                    <p>
+                        We are a group of students studying at Brunel University who have taken on 
+                        the task of creating a website that provides a tool for communities to organize 
+                        community clean ups as well as an accurate Air Quality Index to determine 
+                        pollution within an area.
+                    </p>
+                </div>
+            </div>
+            <div class="title">
+                <h1>Frequently Asked Questions</h1>
+            </div>
+            <div class="content2">
+                <div id="section1">
+                    <img src="img/keyboard.png">
+                    <h3>How do I make a post?</h3>
+                    <p>Simply upload a photo to the website using the 'Community' tab by choosing the 'create a post' option.</p>
+                </div>
+                <div id="section2">
+                    <img src="img/Chocolate Sewing Kit.png">
+                    <h3>What is AQI?</h3>
+                    <p>AQI is an acronym for Air Quality Index, this is used to represent the quality of the air from the levels of pollutants present- the lower the better! </p>
+                </div>
+                <div id="section3">
+                    <img src="img/child.jpg">
+                    <h3>I've made a post, now what?</h3>
+                    <p>Now it's time to wait for other users to respond to your post, we will notify you when they do!</p>
+                </div>
+            </div>
+        </div>   
+    </body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <!--Begin meta tags-->
+        <title>Profile</title>
+        <meta name="description" content="Greenr - a space for community change">
+        <meta name="keywords" content="">
+        <meta name="author" content="group 41">
+        <!--End meta tags-->
+        <!--Begin CSS files-->
+        <link rel="stylesheet" type="text/css" href="css/post.css">
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <!--End CSS files-->
+    </head>
+    <body>
+        <div class="header">
+            <div class="navbar">
+                <a href="">
+                    <button class="nav-button">Home</button>
+                </a>
+                <a href="">
+                    <button class="nav-button">Community</button>
+                </a>
+                <a th:href="@{/aqi_location_rating}">
+                    <button class="nav-button">AQI</button>
+                </a>
+                <a th:href="@{/who-we-are}">
+                    <button class="nav-button">About Us</button>
+                </a>
+                <a href="">
+                    <button class="nav-button">Contact Us</button>
+                </a>
+                <a th:href="@{/profile}">
+                    <button class="nav-button">Your Profile</button>
+                </a>
+                <a th:href="@{/logout}">
+                    <button class="nav-button">Logout</button>
+                </a>
+            </div>
+		</div>
+		<div class="body">
+            <h1>
+                Submit a post:
+            </h1>
+			<form action="#" th:action="@{/post}" th:object="${userprofile}" method="post">
+				<h3 class = "post-title">Title</h3>
+	                <input type="text" th:field="*{post-title}" />
+	            <h3 class = "post-body">Body</h3>
+	                <input type="text" th:field="*{post-body}" />
+	            <button class="btn" type="submit">Create Post</button>            	 
+                <th:block th:each="role : ${listRoles}">
+	                <div>
+	                    <input type="hidden" th:field="*{roles}" th:text="${role.name}" th:value="${role.id}"  />
+	                </div>
+                </th:block>
+	        </form>
+		</div>
+	</body>
+</html>

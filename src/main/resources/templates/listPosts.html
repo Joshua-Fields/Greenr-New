@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>posts</title>
+<meta charset="ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="css/bootstrap.css" rel="stylesheet">
+</head>
+<body>
+            <div class="navbar">
+                <a th:href="@{/welcome-screen}">
+                    <button class="nav-button">Home</button>
+                </a>
+                <a href="/listPosts.html">
+                    <button class="nav-button">Community</button>
+                </a>
+                <a th:href="@{/aqi}">
+                    <button class="nav-button">AQI</button>
+                </a>
+                <a th:href="@{/who-we-are}">
+                    <button class="nav-button">About Us</button>
+                </a>
+                <a th:href="@{/contact-us}">
+                    <button class="nav-button">Contact Us</button>
+                </a>
+                <a th:href="@{/faq}">
+                    <button class="nav-button">FAQ</button>
+                </a>
+                <a th:href="@{/profile}">
+                    <button class="nav-button">Your Profile</button>
+                </a>
+                <a th:href="@{/newPost}">
+                    <button class="nav-button">Create Post</button>
+                </a>                
+                <a th:href="@{/logout}">
+                    <button class="nav-button">Logout</button>
+                </a>
+            </div>
+
+		<div class="col-12">
+			<nav class="navbar navbar-expand-sm navbar-light"
+				style="background-color: #e3f2fd;">
+				<ul class="navbar-nav">
+					<li class="nav-item px-2"><a class="nav-link font-weight-bold"
+						href="/newPost.html">New Post</a></li>
+					<li class="nav-item"><a class="nav-link font-weight-bold"
+						href="/listPosts.html">Previous posts</a></li>
+				</ul>
+			</nav>
+			<hr>
+			<h3 class="text-center">List of Posts</h3>
+			<hr>
+			<div class="px-3">
+				<table class="table table-bordered align-middle table-hover">
+					<thead class="table-dark">
+						<tr>
+							<th scope="col" style="text-align: center; width: 10%">Title</th>
+							<th scope="col" style="text-align: center; width: 70%">Description</th>
+							<th scope="col" style="text-align: center; width: 5%">Image</th>
+							<th scope="col" style="text-align: center; width: 7%">Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="post : ${posts}">
+							<td>[[*{post.postName}]]</td>
+							<td>[[*{post.postDesc}]]</td>
+							<td scope="row"><img alt=""
+								th:src="*{'data:image/jpeg;base64,'+{post.image}}"
+								style="width: 125px; height: 125px;"></td>
+							<td>
+								<div class="col text-center">
+									<button type="button" class="btn btn-success btn-sm mt-2"
+										data-bs-toggle="modal"
+										th:attr="data-bs-target='#exampleModal'+*{post.postID}">
+										Edit title</button>
+									<!-- Modal -->
+									<div class="modal fade" th:id="*{'exampleModal'+{post.postID}}"
+										tabindex="-1" aria-labelledby="exampleModalLabel"
+										aria-hidden="true">
+										<div class="modal-dialog modal-dialog-centered">
+											<div class="modal-content">
+												<div class="modal-header">
+													<h5 class="modal-title" id="exampleModalLabel">Edit post title</h5>
+													<button type="button" class="btn-close"
+														data-bs-dismiss="modal" aria-label="Close"></button>
+												</div>
+												<div class="modal-body">
+													<form action="/editTitle" method="post">
+														<div class="form-group">
+															<input type="hidden" th:value="*{post.postID}"
+																class="form-control" name="id"> <input
+																type="text" name="newPostTitle" class="form-control">
+															<br>
+															<button type="submit" class="btn btn-success">Submit</button>
+														</div>
+													</form>
+												</div>
+											</div>
+										</div>
+									</div>
+									<button type="button" class="btn btn-success btn-sm mt-2"
+										data-bs-toggle="modal"
+										th:attr="data-bs-target='#exampleModal1'+*{post.postID}">
+										Edit description</button>
+									<!-- Modal -->
+									<div class="modal fade"
+										th:id="*{'exampleModal1'+{post.postID}}" tabindex="-1"
+										aria-labelledby="exampleModal1Label" aria-hidden="true">
+										<div class="modal-dialog modal-dialog-centered">
+											<div class="modal-content">
+												<div class="modal-header">
+													<h5 class="modal-title" id="exampleModal1Label">Edit
+														description</h5>
+													<button type="button" class="btn-close"
+														data-bs-dismiss="modal" aria-label="Close"></button>
+												</div>
+												<div class="modal-body">
+													<form action="/editDescription" method="post">
+														<div class="mb-3">
+															<input type="hidden" th:value="*{post.postID}"
+																class="form-control" name="id">
+															<textarea class="form-control" name="newPostDesc"
+																rows="6"></textarea>
+														</div>
+														<button type="submit" class="btn btn-success">Submit</button>
+													</form>
+												</div>
+											</div>
+										</div>
+									</div>
+									<a th:href="@{/deletePost/{id}(id=${post.postID})}"
+										class="btn btn-danger btn-sm mt-2">Delete post</a>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+	<script src="js/bootstrap.js"></script>
+</body>
+</html>

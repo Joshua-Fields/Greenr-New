@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AQI Location Rating</title>
+    <link rel="stylesheet" type="text/css" href="css/aqi.css">
+    <link rel="stylesheet" type="text/css" href="css/faq.css"> 
+    <script>
+      (function(w,d,t,f){   
+          w[f]=w[f]||function(c,k,n){s=w[f],
+          k=s['k']=(s['k']||(k?('&k='+k):''));
+          s['c']=c=(c instanceof Array)?c:[c];s['n']=n=n||0;
+          L=d.createElement(t),
+          e=d.getElementsByTagName(t)[0];  
+          L.async=1;
+          L.src='//feed.aqicn.org/feed/'+(c[n].city)+'/'+(c[n].lang||'')+'/feed.v1.js?n='+n+k;  
+          e.parentNode.insertBefore(L,e);  
+      };  
+      })  (window,document,'script','_aqiFeed');
+
+      function getAQI(){
+          const apiKey = '9ca3e675f648207f79b79892efab5b021f38bf6b'
+          let city = document.getElementById("city").value
+          fetch('https://api.waqi.info/feed/' + city + '/?token=' + apiKey)
+          .then(response => response.json())
+          .then(data => {
+              let aqiValue = data.data.aqi  
+          _aqiFeed({  
+              display:"%cityname  AQI  is  %aqi (last updated on %date)<br> Your AQI rating is: <span style='%style;'>%impact</span><br><span style='font-size:12px'> Air Quality Information for %cityname is provided by %attribution</span>",
+              container:"city-aqi-container",  
+              city:city,
+              });
+          });
+      }
+    </script>
+</head>
+<body>
+
+  <div id="videowrapper">
+    <div id="fullScreenDiv">
+       <video id="video" role="presentation" preload="auto" playsinline="" crossorigin="anonymous" loop="" muted="" autoplay="" class="blur">
+            <source src="video/windmill.mp4" type="video/webm">
+            <source src="video/t12.mp4" type="video/mp4">
+        </video>
+        <div class="header-overlay"></div> 
+        <div id="videoMessage" class="styling"> 
+          <div class="header">
+            <div class="navbar">
+                <a th:href="@{/home}">
+                    <button class="nav-button">Home</button>
+                </a>
+                <a href="">
+                    <button class="nav-button">Community</button>
+                </a>
+                <a th:href="@{/aqi}">
+                    <button class="nav-button">AQI</button>
+                </a>
+                <a th:href="@{/who-we-are}">
+                    <button class="nav-button">About Us</button>
+                </a>
+                <a href="">
+                    <button class="nav-button">Contact Us</button>
+                </a>
+                <a th:href="@{/faq}">
+                    <button class="nav-button">FAQ</button>
+                </a>
+                <a th:href="@{/profile}">
+                    <button class="nav-button">Your Profile</button>
+                </a>
+                <a th:href="@{/logout}">
+                    <button class="nav-button">Logout</button>
+                </a>
+            </div>
+          </div>
+        
+        <h1 class="aqi-title"><strong>What is Your AQI?</strong></h1>
+        <div style="font-size: 17px;" class="center-text">Enter your location: </div>
+        <br><form class="aqi-search" onsubmit="getAQI(); return false" id="location_form">
+          <input type="text" name="" id="city" placeholder="Type Your City">
+          <button type="submit" form="location_form" value="Submit">Get AQI rating</button>
+        </form>
+          <h2 id="city-aqi-container" class="aqi-number">
+            <br>
+            <br>
+            <br>
+          </h2>
+          <figure>
+            <div class="center-image">
+              <img src= "img/aqi_table.png" width="925px"/>
+            </div>
+            <div class="aqi-purpose">
+              <figcaption style="text-align: center;"><strong>Purpose:</strong> The AQI above will need to be compared to this table in order to gauge how safe your city's air is and whether there should be any cause for concern</figcaption>
+            </div>
+          </figure>
+        </body>
+        </html>
+        </div>   
+    </div>
+</div>      

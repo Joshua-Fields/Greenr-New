@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Update Profile Image</title>
+  <link rel="stylesheet" href="profilepicture.css">
+</head>
+<body>
+  <div class="navbar">
+    <a href="">
+        <button class="nav-button">Home</button>
+    </a>
+    <a href="">
+        <button class="nav-button">Community</button>
+    </a>
+    <a href="">
+        <button class="nav-button">AQI</button>
+    </a>
+    <a href="./who-we-are.html">
+        <button class="nav-button">About Us</button>
+    </a>
+    <a href="">
+        <button class="nav-button">Contact Us</button>
+    </a>
+    <a href="./faq.html">
+        <button class="nav-button">FAQ</button>
+    </a>
+    <a href="">
+        <button class="nav-button">Your Profile</button>
+    </a>
+</div>
+
+
+
+<h3>Click here to update your profile image</h3>
+
+<div class="profile-pic-div">
+  <img src="./img/default-person.jpg" id="photo">
+  <input type="file" id="file">
+  <label for="file" id="uploadBtn">Choose Photo</label>
+</div>
+
+
+<script src="app.js"></script>
+  <script>
+    document.querySelector("#file").addEventListener("change", function ()
+        {
+            const reader = new FileReader();
+
+            reader.addEventListener("load", () => 
+            {
+                localStorage.setItem("Profile-Image", reader.result);
+            });
+
+            reader.readAsDataURL(this.files[0]);
+        });  
+</script>
+
+</body>
+</html>

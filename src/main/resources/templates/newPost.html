@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>posts</title>
+<meta charset="ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="css/bootstrap.css" rel="stylesheet">
+
+</head>
+<body>
+            <div class="navbar">
+                <a href="">
+                    <button class="nav-button">Home</button>
+                </a>
+                <a th:href="@{/community}">
+                    <button class="nav-button">Community</button>
+                </a>
+                <a th:href="@{/aqi}">
+                    <button class="nav-button">AQI</button>
+                </a>
+                <a th:href="@{/who-we-are}">
+                    <button class="nav-button">About Us</button>
+                </a>
+                <a th:href="@{/contact-us}">
+                    <button class="nav-button">Contact Us</button>
+                </a>
+                <a th:href="@{/faq}">
+                    <button class="nav-button">FAQ</button>
+                </a>
+                <a th:href="@{/profile}">
+                    <button class="nav-button">Your Profile</button>
+                </a>
+                <a th:href="@{/newPost}">
+                    <button class="nav-button">Create Post</button>
+                </a>                
+                <a th:href="@{/logout}">
+                    <button class="nav-button">Logout</button>
+                </a>
+            </div>
+	<div>
+		<div class="col-12">
+			<nav class="navbar navbar-expand-sm  navbar-light"
+				style="background-color: #e3f2fd;">
+				<ul class="navbar-nav">
+					<li class="nav-item px-2"><a class="nav-link font-weight-bold"
+						href="/newPost.html">New Post</a></li>
+					<li class="nav-item"><a class="nav-link font-weight-bold"
+						href="/listPosts.html">Previous posts</a></li>
+				</ul>
+			</nav>
+			<hr>
+			<h3 class="text-center">Create new post</h3>
+			<hr>
+			<div class="row">
+				<div class="col-sm-6 mx-auto">
+					<div class="card">
+						<div class="card-body">
+							<form th:action="@{/addPost}" method="Post"
+								enctype="multipart/form-data">
+								<div class="form-group">
+									<label for="title">Post title</label> <input type="text"
+										name="p_title" id="title" class="form-control"> <label
+										for="description">Post description</label>
+									<textarea name="p_desc" class="form-control" rows="6"></textarea>
+									<br>
+									<div class="mb-3">
+										<label for="formFile" class="form-label">Default file
+											input example</label> <input class="form-control" type="file"
+											name="file" id="formFile">
+									</div>
+									<div class="col text-center pt-2">
+										<button type="submit" class="btn btn-primary">Submit</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="js/jquery-3.5.1.min.js"></script>
+	<script src="js/bootstrap.js"></script>
+</body>
+</html>

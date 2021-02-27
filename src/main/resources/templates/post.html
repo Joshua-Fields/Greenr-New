@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <!--Begin meta tags-->
+        <title>Profile</title>
+        <meta name="description" content="Greenr - a space for community change">
+        <meta name="keywords" content="">
+        <meta name="author" content="group 41">
+        <!--End meta tags-->
+        <!--Begin CSS files-->
+        <link rel="stylesheet" type="text/css" href="css/post.css">
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <!--End CSS files-->
+    </head>
+    <body>
+        <div class="header">
+            <div class="navbar">
+                <a href="">
+                    <button class="nav-button">Home</button>
+                </a>
+                <a href="">
+                    <button class="nav-button">Community</button>
+                </a>
+                <a th:href="@{/aqi_location_rating}">
+                    <button class="nav-button">AQI</button>
+                </a>
+                <a th:href="@{/who-we-are}">
+                    <button class="nav-button">About Us</button>
+                </a>
+                <a href="">
+                    <button class="nav-button">Contact Us</button>
+                </a>
+                <a th:href="@{/profile}">
+                    <button class="nav-button">Your Profile</button>
+                </a>
+                <a th:href="@{/logout}">
+                    <button class="nav-button">Logout</button>
+                </a>
+            </div>
+		</div>
+		<div class="body">
+            <h1>
+                Submit a post:
+            </h1>
+            <form action "#" th:action="@{/community}" method="post" th:object="${post}" enctype="multipart/form-data">
+            
+            	<h3 class = "post-title">Title</h3>
+            		<input id="post-title" type="text" placeholder="Name your event" required
+            			th:field="*{postTitle}" />          			
+            	<h3 class = "post-title">Body</h3>
+            		<input id="post-title" type="text" placeholder="Tell us about it" required
+            			th:field="*{postBody}" />            		
+            	<h3 class = "post-title">Date</h3>
+            		<input id="post-title" type="date" placeholder="Enter the date" required
+            			th:field="*{postDate}" />  
+            	<h3 class = "post-file">Photo</h3>
+            		<input id="post-file" type="file" placeholder="Place your photo here"
+            			th:field="*{postFile}" /> 
+            	<button class="btn" type="submit">Create Post</button> 
+            	          			
+            			
+            </form>
+		</div>
+	</body>
+</html>
