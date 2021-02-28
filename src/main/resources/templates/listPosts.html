@@ -86,7 +86,7 @@
 														data-bs-dismiss="modal" aria-label="Close"></button>
 												</div>
 												<div class="modal-body">
-													<form action="/editTitle" method="post">
+													<form th:action="@{/editTitle}" method="post">
 														<div class="form-group">
 															<input type="hidden" th:value="*{post.postID}"
 																class="form-control" name="id"> <input
@@ -116,7 +116,7 @@
 														data-bs-dismiss="modal" aria-label="Close"></button>
 												</div>
 												<div class="modal-body">
-													<form action="/editDescription" method="post">
+													<form th:action="@{/editDescription}" method="post">
 														<div class="mb-3">
 															<input type="hidden" th:value="*{post.postID}"
 																class="form-control" name="id">

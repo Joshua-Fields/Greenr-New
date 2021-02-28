@@ -6,6 +6,7 @@
 
 body{
 	background: rgb(179, 210, 218);
+	position: relative;
 }
 
 .aqi-title
@@ -21,6 +22,8 @@ body{
 	margin-left: auto;
 	margin-right: auto;
 	width: 50%;
+	overflow:hidden;
+	position: relative;
 }
 
 .aqi-purpose
@@ -55,7 +58,7 @@ body{
 
 .header-overlay{
     height:100vh;
-    position: absolute;
+    position: relative;
     top:0;
     left:0;
     width:100vw;
@@ -76,9 +79,15 @@ body{
 	z-index: -1;
 }
 
-html, body {
+header {
+	position: relative;
+}
+
+
+body {
     height: 100%;
     margin: 0;
+    position: relative;
 }
 #videowrapper{  
     position: relative;
@@ -131,7 +140,8 @@ html, body {
   text-align: center;
 }
 .center-image{
-  display: block;
+  display: flex;
+  position: relative;
   margin-left: auto;
   margin-right: auto;
   width: 50%;

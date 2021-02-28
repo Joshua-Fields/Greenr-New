@@ -70,9 +70,19 @@ public class MainController {
 		return "addPost";
 	}
 	
+	@GetMapping("/editDescription") 
+	public String editDescription() {
+		return "editDescription";
+	}
+	
 	@GetMapping("/listPost") 
 	public String listPost() {
 		return "listPost";
+	}
+	
+	@GetMapping("/editTitle") 
+	public String editTitle() {
+		return "editTitle";
 	}
 	
 	@GetMapping("/community") 
